@@ -19,7 +19,17 @@ int main(int argc, char **argv) {
         printf("Failed to load image: %s\n", imgpath);
         return 1;
     }
-
     printf("Loaded image: %s (%dx%d)\n", imgpath, w, h);
+
+    char *shades = "$#%@*+- ";
+
+    for (int y = 0; y < h; ++y) {
+        for (int x = 0; x < w; ++x) {
+            int value = img[y*w + x];
+            printf("%c", shades[(value*7)/255]);
+        }
+        printf("\n");
+    }
+
     return 0;
 }
